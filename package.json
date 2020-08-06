@@ -1,14 +1,10 @@
 {
-  "name": "usekeyboard",
-  "version": "1.0.0",
+  "name": "useKeyboard",
+  "version": "0.0.1",
   "author": "anujverma000@gmail.com",
   "license": "MIT",
   "description": "React Native hook for keyboard",
-  "main": "src/index.js",
-  "types": "./dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
+  "main": "src/index.ts",
   "keywords": [
     "react-native",
     "react-native hook",
@@ -25,8 +21,7 @@
   "scripts": {
     "lint:es": "eslint -c eslintrc.json 'src/**/*.ts'",
     "lint:ts": "tslint -c tslint.json 'src/**/*.ts'",
-    "lint": "npm run lint:es && npm run lint:ts",
-    "build": "webpack --config webpack.config.js"
+    "lint": "npm run lint:es && npm run lint:ts"
   },
   "publishConfig": {
     "access": "public"
@@ -44,29 +39,6 @@
     "react-native-typescript-transformer": "^1.2.13",
     "ts-loader": "^8.0.2",
     "typescript": "^3.9.7",
-    "webpack": "^4.44.1",
-    "webpack-cli": "^3.3.12"
-  },
-  "peerDependencies": {
-    "react": ">=16.8.0",
-    "react-native": "0.63.2"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged && lint-staged"
-    }
-  },
-  "lint-staged": {
-    "src/**/*.{js,ts}": [
-      "eslint --fix",
-      "git add"
-    ],
-    "*.json": [
-      "prettier --write",
-      "git add --force"
-    ]
-  },
-  "dependencies": {
     "husky": "^4.2.5",
     "lint-staged": "^10.2.11",
     "prettier": "^2.0.5",
@@ -75,5 +47,25 @@
     "tslint-eslint-rules": "^5.4.0",
     "tslint-react": "^5.0.0",
     "tslint-react-recommended": "^1.0.15"
+  },
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged && lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,ts}": [
+      "npm run lint:es --fix",
+      "npm run lint:ts --fix",
+      "git add"
+    ],
+    "*.json": [
+      "prettier --write",
+      "git add --force"
+    ]
   }
 }
